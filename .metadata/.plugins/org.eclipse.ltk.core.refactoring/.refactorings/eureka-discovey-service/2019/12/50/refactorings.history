@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;eureka-discovey-service&apos;&#x0A;- Original project: &apos;eureka-discovey-service&apos;&#x0A;- Original element: &apos;eureka-discovey-service/src/main/java/com.soumya.microservices.com.soumya.microservices&apos;" description="Delete element" element1="/src\/main\/java&lt;com.soumya.microservices.com.soumya.microservices" element2="/src\/main\/java&lt;com.soumya.microservices.com.soumya" element3="/src\/main\/java&lt;com.soumya.microservices.com" elements="3" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1576098689318" subPackages="false" version="1.0"/>
+</session>

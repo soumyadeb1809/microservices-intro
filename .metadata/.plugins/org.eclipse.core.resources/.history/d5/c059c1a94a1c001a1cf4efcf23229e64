@@ -1,0 +1,5 @@
+package com.soumya.microservices.model;
+
+public class Movie {
+
+}

@@ -1,0 +1,3 @@
+server.port=8082
+spring.application.name=movie-info-service
+api.key=91f901dfb370b3eabc072a99bf7d4bcd

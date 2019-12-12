@@ -1,0 +1,41 @@
+package com.soumya.microservices.services;
+
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import com.soumya.microservices.models.Rating;
+import com.soumya.microservices.models.UserRating;
+
+@Service
+public class RatingInfo {
+	
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	// Bulkhead pattern
+	@HystrixCommand(
+			fallbackMethod = "getFallbackUserRating",
+			threadPoolKey = "ratingInfoPool",
+			threadPoolProperties = {
+					@HystrixProperty(name = "coreSize", value = "20"),
+					@HystrixProperty(name = "maxQueueSize", value ="10")
+			}
+	)
+	public UserRating getUserRating(String userId) {
+		return restTemplate.getForObject("http://movie-rating-service/rating/users/" + userId, UserRating.class);
+	}
+	
+	public UserRating getFallbackUserRating(String userId) {
+		UserRating userRating = new UserRating();
+		userRating.setUserRating(Arrays.asList(
+				new Rating("0", 0)
+		));
+		return userRating;
+	}
+
+}

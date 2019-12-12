@@ -1,0 +1,30 @@
+package com.soumya.microservices.resources;
+
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.soumya.microservices.models.CatelogItem;
+
+@RestController
+@RequestMapping("/catalog")
+public class MovieCatalogResource {
+	
+	
+	@RequestMapping("/{userId}")
+	public List<CatelogItem> getCatalog(@PathVariable("userId") String userId){
+		
+		// Get all rated movie IDs
+		
+		// For each movie ID call movie info service
+		
+		// Put them all together
+		return Collections.singletonList(
+				new CatelogItem("Transformers", "Some fancy movie", 4)
+		);
+	}
+	
+}
